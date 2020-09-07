@@ -1,0 +1,130 @@
+<?
+if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
+	die();
+?>
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title><? $APPLICATION->ShowTitle(); ?></title>
+    <? $APPLICATION->ShowHead(); ?>
+    <div id="panel">
+        <? $APPLICATION->ShowPanel(); ?>
+    </div>
+    <!--[if gte IE 9]><style type="text/css">.gradient {filter: none;}</style><![endif]-->
+    <?
+    use Bitrix\Main\Page\Asset;
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH.'/js/jquery-1.8.2.min.js');
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/functions.js");
+    ?>
+</head>
+<body>
+<div class="wrap">
+    <div class="hd_header_area">
+        <div class="hd_header">
+            <table>
+                <tr>
+                    <td rowspan="2" class="hd_companyname">
+                        <h1><a href="/"><? $APPLICATION->ShowTitle(); ?></a></h1>
+                    </td>
+                    <td rowspan="2" class="hd_txarea">
+                        <span class="tel">8 (495) 212-85-06</span>	<br/>
+                        время работы <span class="workhours">ежедневно с 9-00 до 18-00</span>
+                    </td>
+                    <td style="width:232px">
+                        <form action="">
+                            <div class="hd_search_form" style="float:right;">
+                                <input placeholder="Поиск" type="text"/>
+                                <input type="submit" value=""/>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-top: 11px;">
+                                <?$APPLICATION->IncludeComponent(
+	"bitrix:system.auth.form", 
+	"auth", 
+	array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "nestedtop",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "3",
+		"MENU_CACHE_GET_VARS" => "",
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "N",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"ROOT_MENU_TYPE" => "top",
+		"USE_EXT" => "N",
+		"COMPONENT_TEMPLATE" => "auth",
+		"REGISTER_URL" => "",
+		"FORGOT_PASSWORD_URL" => "",
+		"PROFILE_URL" => "",
+		"SHOW_ERRORS" => "Y"
+	),
+	false
+);?>
+
+
+<!--							<span class="hd_singin"><a id="hd_singin_but_open" href="">Войти на сайт</a>-->
+<!--							<div class="hd_loginform">-->
+<!--								<span class="hd_title_loginform">Войти на сайт</span>-->
+<!--								<form name="" method="" action="">-->
+<!---->
+<!--									<input placeholder="Логин"  type="text">-->
+<!--									<input  placeholder="Пароль"  type="password">-->
+<!--									<a href="/" class="hd_forgotpassword">Забыли пароль</a>-->
+<!---->
+<!--									<div class="head_remember_me" style="margin-top: 10px">-->
+<!--										<input id="USER_REMEMBER_frm" name="USER_REMEMBER" value="Y" type="checkbox">-->
+<!--										<label for="USER_REMEMBER_frm" title="Запомнить меня на этом компьютере">Запомнить меня</label>-->
+<!--									</div>-->
+<!--									<input value="Войти" name="Login" style="margin-top: 20px;" type="submit">-->
+<!--									</form>-->
+<!--								<span class="hd_close_loginform">Закрыть</span>-->
+<!--							</div>-->
+<!--							</span><br>-->
+<!--                        <a href="" class="hd_signup">Зарегистрироваться</a>-->
+                    </td>
+                </tr>
+            </table>
+            <?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"top_menu_multilevel1", 
+	array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "nestedtop",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "3",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "A",
+		"MENU_CACHE_USE_GROUPS" => "N",
+		"ROOT_MENU_TYPE" => "top",
+		"USE_EXT" => "N",
+		"COMPONENT_TEMPLATE" => "top_menu_multilevel1"
+	),
+	false
+);?>
+        </div>
+    </div>
+
+    <!--- // end header area --->
+    <div class="bc_breadcrumbs">
+        <ul>
+            <li><a href="">Каталог</a></li>
+            <li><a href="">Мебель</a></li>
+            <li><a href="">Выставки и события</a></li>
+        </ul>
+        <div class="clearboth"></div>
+    </div>
+    <div class="main_container page">
+        <div class="mn_container">
+            <div class="mn_content">
+                <div class="main_post">
+    <? if($_GET["ELEMENT_ID"] == false): ?>
+                    <div class="main_title">
+                        <h1><? $APPLICATION->ShowTitle(false); ?></h1>
+                    </div>
+                    <? endif ?>

@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} !^http://(www.)?dev.maxpoints.ru(/)?
+RewriteCond %{HTTP_REFERER} !^http://(.*).dev.maxpoints.ru(/)?
+RewriteRule .*.(gif|jpg|jpeg|png|pdf|doc|php)$ – [F]
